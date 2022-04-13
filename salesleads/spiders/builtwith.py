@@ -1,21 +1,24 @@
 import scrapy
 from scrapy_selenium import SeleniumRequest
 from bs4 import BeautifulSoup
+from selenium import webdriver
 
 
-class ShopgramSpider(scrapy.Spider):
-    name = 'shopgram'
-    allowed_domains = ['https://trends.builtwith.com/']
+class BuildWithSpider(scrapy.Spider):
+    name = 'buildwith'
+    allowed_domains = ['trends.builtwith.com']
     start_urls = ['https://trends.builtwith.com/websitelist/Shopify/Spain',
                   'https://trends.builtwith.com/websitelist/Shopify-Plus/Spain',
                   'https://trends.builtwith.com/websitelist/Magento/Spain',
                   'https://trends.builtwith.com/websitelist/WooCommerce-Checkout/Spain']
 
     def start_requests(self):
+        """Call all the urls to scrap"""
         for url in self.start_urls:
-            yield SeleniumRequest(url=url, callback=self.parse)
+            yield SeleniumRequest(url=url, wait_time=10, callback=self.parse)
 
     def parse(self, response):
+        """Parse content to get sstores data"""
         driver = response.request.meta['driver']
         soup = BeautifulSoup(driver.page_source, 'lxml')
         shop_urls = soup.findAll("tr", {"data-domain": True})
@@ -32,6 +35,7 @@ class ShopgramSpider(scrapy.Spider):
             yield item
 
     def parse_traffic(self, traffic):
+        """Parse traffic column to numerical value"""
         if traffic.lower() == "very high":
             return 3
         elif traffic.lower() == "high":

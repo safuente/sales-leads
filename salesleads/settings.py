@@ -9,7 +9,6 @@
 from shutil import which
 
 
-
 BOT_NAME = 'salesleads'
 
 SPIDER_MODULES = ['salesleads.spiders']
@@ -34,7 +33,7 @@ DOWNLOAD_DELAY = 3
 #CONCURRENT_REQUESTS_PER_IP = 16
 
 # Disable cookies (enabled by default)
-COOKIES_ENABLED = True
+COOKIES_ENABLED = False
 
 # Disable Telnet Console (enabled by default)
 #TELNETCONSOLE_ENABLED = False
@@ -58,12 +57,11 @@ COOKIES_ENABLED = True
 #}
 
 
-
 SELENIUM_DRIVER_NAME = 'chrome'
 
 SELENIUM_DRIVER_EXECUTABLE_PATH = which('chromedriver')
 
-SELENIUM_DRIVER_ARGUMENTS=['--headless']
+SELENIUM_DRIVER_ARGUMENTS = ['--headless']
 
 DOWNLOADER_MIDDLEWARES = {
     'scrapy_selenium.SeleniumMiddleware': 800,
@@ -78,7 +76,8 @@ DOWNLOADER_MIDDLEWARES = {
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    'salesleads.pipelines.SalesleadsPipeline': 300,
+    'salesleads.pipelines.SalesLeadsPipeline': 300,
+    'salesleads.pipelines.DuplicatesPipeline': 800,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
