@@ -11,7 +11,7 @@ def open_json(output_file):
 st.title('Sales Leads Results')
 st.write('This Streamlit application shows the results of scrapy https://trends.builtwith.com for Spain')
 
-df = pd.read_json("data/stores.json").sort_values("traffic", ascending=False)
+df = pd.read_json("salesleads/data/stores.json").sort_values("traffic", ascending=False)
 st.title("Stores ordered by web traffic in Spain")
 st.dataframe(df, width=720)
 
