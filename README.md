@@ -26,7 +26,7 @@ Please follow the next steps using command line:
 ## Run the spider
 The following command must be executed:
     
-    scrapy runspider salesleads/spider/builtwith.py
+    scrapy runspider salesleads/spiders/builtwith.py
 
 The scraping result is stored in salesleads/data/stores.json
 
