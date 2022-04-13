@@ -13,7 +13,7 @@ class BuildWithSpider(scrapy.Spider):
     def start_requests(self):
         """Call all the urls to scrap"""
         for url in self.start_urls:
-            yield SeleniumRequest(url=url, wait_time=10, callback=self.parse)
+            yield SeleniumRequest(url=url, wait_time=30, callback=self.parse)
 
     def parse(self, response):
         """Parse content to get sstores data"""
