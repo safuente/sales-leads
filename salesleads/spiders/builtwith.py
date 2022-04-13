@@ -2,15 +2,13 @@ import scrapy
 from scrapy_selenium import SeleniumRequest
 from bs4 import BeautifulSoup
 from selenium import webdriver
+from utils import get_start_urls
 
 
 class BuildWithSpider(scrapy.Spider):
     name = 'buildwith'
     allowed_domains = ['trends.builtwith.com']
-    start_urls = ['https://trends.builtwith.com/websitelist/Shopify/Spain',
-                  'https://trends.builtwith.com/websitelist/Shopify-Plus/Spain',
-                  'https://trends.builtwith.com/websitelist/Magento/Spain',
-                  'https://trends.builtwith.com/websitelist/WooCommerce-Checkout/Spain']
+    start_urls = get_start_urls()
 
     def start_requests(self):
         """Call all the urls to scrap"""
