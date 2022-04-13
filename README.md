@@ -9,7 +9,7 @@ In the path salesleads/spiders/settings.ini the following parameters could be co
     # Urls from trends.builtwith.com to do the scraping process
     URLS=https://trends.builtwith.com/websitelist/Shopify/, https://trends.builtwith.com/websitelist/Shopify-Plus/,https://trends.builtwith.com/websitelist/Magento/,https://trends.builtwith.com/websitelist/WooCommerce-Checkout/
     # Countries to be included in the scraping process
-    COUNTRIES =Spain, France, United Kingdom, Germany, Italy
+    COUNTRIES=United Kingdom, Germany, Italy
 
 ## Launch the environment
 Please follow the next steps using command line:
